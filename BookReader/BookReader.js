@@ -228,10 +228,13 @@ BookReader.prototype.init = function() {
         nextMode = this.constMode2up;
     }
 
-    if (this.canSwitchToMode(nextMode)) {
+    // BD Modification - honor mode if provided.
+    if(!this.mode) {
+      if (this.canSwitchToMode(nextMode)) {
         this.mode = nextMode;
-    } else {
+      } else {
         this.mode = this.constMode1up;
+      }
     }
 
     if (this.onePage.responsiveAutofit && this.mode == this.constMode1up) {
